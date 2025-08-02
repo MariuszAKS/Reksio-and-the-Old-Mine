@@ -1,15 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtjpu6wavxcos"]
+[gd_scene load_steps=9 format=3 uid="uid://dtjpu6wavxcos"]
 
 [ext_resource type="Script" uid="uid://bqhe1xqgbksbk" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://d34lmawmd1w76" path="res://scenes/mine_entrance.tscn" id="1_yqjtg"]
 [ext_resource type="Script" uid="uid://bhl31n4twp24t" path="res://scripts/reksio.gd" id="2_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://bvekbeqmef6ka" path="res://art/visual/reksio.png" id="4_iywne"]
 [ext_resource type="Script" uid="uid://4rfstli3fy6e" path="res://scripts/kretes.gd" id="4_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://b5ty1egrvb3v3" path="res://art/visual/kretes.png" id="6_p57ef"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbhrr"]
+radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lnu2h"]
+radius = 4.0
 
 [node name="Game" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_lnu2h")
 
 [node name="Room container" type="Node2D" parent="."]
@@ -17,20 +22,33 @@ script = ExtResource("1_lnu2h")
 [node name="Mine entrance" parent="Room container" instance=ExtResource("1_yqjtg")]
 
 [node name="Reksio" type="StaticBody2D" parent="."]
-position = Vector2(306, 231)
+position = Vector2(300, 350)
+scale = Vector2(2, 2)
 script = ExtResource("2_lnu2h")
 metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Reksio"]
+position = Vector2(0, 2)
+scale = Vector2(2, 2)
+texture = ExtResource("4_iywne")
+offset = Vector2(0, -8)
 
 [node name="Walk Collision" type="CollisionShape2D" parent="Reksio"]
 shape = SubResource("CircleShape2D_lbhrr")
 
 [node name="Kretes" type="StaticBody2D" parent="." node_paths=PackedStringArray("target_to_follow")]
-position = Vector2(240, 256)
+position = Vector2(266, 350)
+scale = Vector2(2, 2)
 script = ExtResource("4_lbhrr")
 target_to_follow = NodePath("../Reksio")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Kretes"]
+[node name="Sprite2D" type="Sprite2D" parent="Kretes"]
+scale = Vector2(2, 2)
+texture = ExtResource("6_p57ef")
+offset = Vector2(0, -7)
+
+[node name="Walk Collision" type="CollisionShape2D" parent="Kretes"]
 shape = SubResource("CircleShape2D_lnu2h")
 
 [node name="Area2D" type="Area2D" parent="."]
