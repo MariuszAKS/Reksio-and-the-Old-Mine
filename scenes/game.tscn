@@ -1,3 +1,36 @@
-[gd_scene format=3 uid="uid://dtjpu6wavxcos"]
+[gd_scene load_steps=7 format=3 uid="uid://dtjpu6wavxcos"]
+
+[ext_resource type="Script" uid="uid://bqhe1xqgbksbk" path="res://scripts/game.gd" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://d34lmawmd1w76" path="res://scenes/mine_entrance.tscn" id="1_yqjtg"]
+[ext_resource type="Script" uid="uid://bhl31n4twp24t" path="res://scripts/reksio.gd" id="2_lnu2h"]
+[ext_resource type="Script" uid="uid://4rfstli3fy6e" path="res://scripts/kretes.gd" id="4_lbhrr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lbhrr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lnu2h"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_lnu2h")
+
+[node name="Room container" type="Node2D" parent="."]
+
+[node name="Mine entrance" parent="Room container" instance=ExtResource("1_yqjtg")]
+
+[node name="Reksio" type="StaticBody2D" parent="."]
+position = Vector2(306, 231)
+script = ExtResource("2_lnu2h")
+metadata/_edit_group_ = true
+
+[node name="Walk Collision" type="CollisionShape2D" parent="Reksio"]
+shape = SubResource("CircleShape2D_lbhrr")
+
+[node name="Kretes" type="StaticBody2D" parent="." node_paths=PackedStringArray("target_to_follow")]
+position = Vector2(240, 256)
+script = ExtResource("4_lbhrr")
+target_to_follow = NodePath("../Reksio")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kretes"]
+shape = SubResource("CircleShape2D_lnu2h")
+
+[node name="Area2D" type="Area2D" parent="."]
