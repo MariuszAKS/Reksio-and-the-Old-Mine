@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtjpu6wavxcos"]
+[gd_scene load_steps=11 format=3 uid="uid://dtjpu6wavxcos"]
 
 [ext_resource type="Script" uid="uid://bqhe1xqgbksbk" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://d34lmawmd1w76" path="res://scenes/mine_entrance.tscn" id="1_yqjtg"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bvekbeqmef6ka" path="res://art/visual/reksio.png" id="4_iywne"]
 [ext_resource type="Script" uid="uid://4rfstli3fy6e" path="res://scripts/kretes.gd" id="4_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://b5ty1egrvb3v3" path="res://art/visual/kretes.png" id="6_p57ef"]
+[ext_resource type="Script" uid="uid://dmaanwyoktxxm" path="res://scripts/ui.gd" id="7_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://cxip0wc7tpn32" path="res://art/visual/item_pickaxe_heads.png" id="8_gee14"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbhrr"]
 radius = 4.0
@@ -51,4 +53,86 @@ offset = Vector2(0, -7)
 [node name="Walk Collision" type="CollisionShape2D" parent="Kretes"]
 shape = SubResource("CircleShape2D_lnu2h")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+script = ExtResource("7_u5sy4")
+
+[node name="Items" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 284.0
+offset_right = 156.0
+offset_bottom = 360.0
+mouse_filter = 2
+
+[node name="Background" type="ColorRect" parent="UI/Items"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.207843, 0.207843, 0.207843, 0.592157)
+
+[node name="Margin" type="MarginContainer" parent="UI/Items"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -78.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+mouse_filter = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Grid" type="GridContainer" parent="UI/Items/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 4
+metadata/_edit_group_ = true
+
+[node name="Slot0" type="TextureRect" parent="UI/Items/Margin/Grid"]
+layout_mode = 2
+mouse_filter = 0
+texture = ExtResource("8_gee14")
+
+[node name="Slot1" type="TextureRect" parent="UI/Items/Margin/Grid"]
+layout_mode = 2
+mouse_filter = 0
+texture = ExtResource("8_gee14")
+
+[node name="Slot2" type="TextureRect" parent="UI/Items/Margin/Grid"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Slot3" type="TextureRect" parent="UI/Items/Margin/Grid"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Slot4" type="TextureRect" parent="UI/Items/Margin/Grid"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Slot5" type="TextureRect" parent="UI/Items/Margin/Grid"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Slot6" type="TextureRect" parent="UI/Items/Margin/Grid"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Slot7" type="TextureRect" parent="UI/Items/Margin/Grid"]
+layout_mode = 2
+mouse_filter = 0

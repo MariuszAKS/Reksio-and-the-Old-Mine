@@ -27,13 +27,15 @@ collision_mask = 0
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walk area"]
-polygon = PackedVector2Array(219, 186, 155, 194, 159, 262, 122, 293, 118, 358, 540, 359, 540, 295, 483, 293, 462, 279, 461.486, 256.136, 498, 241, 499, 193, 291, 189, 280, 220, 220, 221)
+polygon = PackedVector2Array(219, 186, 156, 194, 156, 359, 540, 359, 540, 295, 483, 293, 462, 279, 461.486, 256.136, 498, 241, 499, 193, 291, 189, 280, 220, 220, 221)
 
-[node name="Change scene" type="Area2D" parent="."]
+[node name="Change scene area" type="Area2D" parent="."]
 position = Vector2(494, 216)
 collision_layer = 8
 collision_mask = 0
-metadata/_edit_group_ = true
 
-[node name="Collision" type="CollisionShape2D" parent="Change scene"]
+[node name="Collision" type="CollisionShape2D" parent="Change scene area"]
 shape = SubResource("CircleShape2D_wd78g")
+
+[node name="Go back marker" type="Marker2D" parent="."]
+position = Vector2(440, 230)
