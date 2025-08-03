@@ -26,7 +26,7 @@ window/stretch/mode="viewport"
 2d_physics/layer_1="Move"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Interact"
-2d_physics/layer_4="Change scene"
+2d_physics/layer_4="Layer 4"
 
 [rendering]
 

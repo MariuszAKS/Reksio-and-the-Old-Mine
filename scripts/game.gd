@@ -9,6 +9,7 @@ enum Items {
 
 @onready var room_container: Node2D = get_node("Room container")
 @onready var mine_entrance_room: MineEntrance = load("res://scenes/mine_entrance.tscn").instantiate()
+@onready var mine_cliff_room: MineCliff = load("res://scenes/mine_cliff.tscn").instantiate()
 var current_room = null
 
 @onready var ui: UI = get_node("UI")
@@ -20,22 +21,33 @@ var inventory: Array[Items] = []
 
 
 func _ready() -> void:
-	set_room_as_current(mine_entrance_room)
+	room_container.add_child(mine_entrance_room)
+	current_room = mine_entrance_room
+
+	mine_entrance_room.walk_to.connect(reksio.start_walking)
+	mine_cliff_room.walk_to.connect(reksio.start_walking)
+
+	mine_entrance_room.change_scene.connect(func(): call_deferred("set_room_as_current", mine_cliff_room))
+	mine_cliff_room.change_scene.connect(func(): call_deferred("set_room_as_current", mine_entrance_room))
 
 	ui.item_clicked.connect(try_use_item)
-	try_add_to_inventory(Items.HAMMER_CHISEL)
-	try_add_to_inventory(Items.WOODEN_WHEELS)
-	try_add_to_inventory(Items.WOODEN_POLE)
+	# try_add_to_inventory(Items.HAMMER_CHISEL)
+	# try_add_to_inventory(Items.WOODEN_WHEELS)
+	# try_add_to_inventory(Items.WOODEN_POLE)
+
 
 func set_room_as_current(room):
-	if current_room != null:
-		current_room.walk_to.disconnect(reksio.start_walking)
-		room_container.remove_child(current_room)
-	
+	room_container.remove_child(current_room)
 	room_container.add_child(room)
 	current_room = room
+	
+	reksio.stop_walking()
 
-	room.walk_to.connect(reksio.start_walking)
+	reksio.position = room.enter_position.position
+	kretes.position = room.enter_position.position
+
+	reksio.update_scale()
+	kretes.update_scale()
 
 
 func try_add_to_inventory(item) -> bool:
@@ -67,4 +79,3 @@ func try_use_item(item_id):
 				remove_from_inventory(item_id)
 	
 	# check other items conditions
-

@@ -1,16 +1,115 @@
-[gd_scene load_steps=11 format=3 uid="uid://dtjpu6wavxcos"]
+[gd_scene load_steps=24 format=3 uid="uid://dtjpu6wavxcos"]
 
 [ext_resource type="Script" uid="uid://bqhe1xqgbksbk" path="res://scripts/game.gd" id="1_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://d34lmawmd1w76" path="res://scenes/mine_entrance.tscn" id="1_yqjtg"]
 [ext_resource type="Script" uid="uid://bhl31n4twp24t" path="res://scripts/reksio.gd" id="2_lnu2h"]
-[ext_resource type="Texture2D" uid="uid://bvekbeqmef6ka" path="res://art/visual/reksio.png" id="4_iywne"]
+[ext_resource type="Texture2D" uid="uid://boa38aykhaa42" path="res://art/visual/reksio_walk.png" id="3_u5sy4"]
 [ext_resource type="Script" uid="uid://4rfstli3fy6e" path="res://scripts/kretes.gd" id="4_lbhrr"]
-[ext_resource type="Texture2D" uid="uid://b5ty1egrvb3v3" path="res://art/visual/kretes.png" id="6_p57ef"]
+[ext_resource type="Texture2D" uid="uid://o3mojip3wflo" path="res://art/visual/kretes_walk.png" id="5_u5sy4"]
 [ext_resource type="Script" uid="uid://dmaanwyoktxxm" path="res://scripts/ui.gd" id="7_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://cxip0wc7tpn32" path="res://art/visual/item_pickaxe_heads.png" id="8_gee14"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gee14"]
+atlas = ExtResource("3_u5sy4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tnpc"]
+atlas = ExtResource("3_u5sy4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtaks"]
+atlas = ExtResource("3_u5sy4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvpfn"]
+atlas = ExtResource("3_u5sy4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dinhu"]
+atlas = ExtResource("3_u5sy4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvuet"]
+atlas = ExtResource("3_u5sy4")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p57ef"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gee14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tnpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtaks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvpfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dinhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvuet")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbhrr"]
-radius = 4.0
+radius = 4.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trtic"]
+atlas = ExtResource("5_u5sy4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir15t"]
+atlas = ExtResource("5_u5sy4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca42v"]
+atlas = ExtResource("5_u5sy4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rysoc"]
+atlas = ExtResource("5_u5sy4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssvqc"]
+atlas = ExtResource("5_u5sy4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_264po"]
+atlas = ExtResource("5_u5sy4")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u5sy4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trtic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir15t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca42v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rysoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssvqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_264po")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lnu2h"]
 radius = 4.0
@@ -21,33 +120,38 @@ script = ExtResource("1_lnu2h")
 
 [node name="Room container" type="Node2D" parent="."]
 
-[node name="Mine entrance" parent="Room container" instance=ExtResource("1_yqjtg")]
-
-[node name="Reksio" type="StaticBody2D" parent="."]
-position = Vector2(300, 350)
+[node name="Reksio" type="AnimatableBody2D" parent="."]
+position = Vector2(302, 320)
 scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 0
+sync_to_physics = false
 script = ExtResource("2_lnu2h")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Reksio"]
-position = Vector2(0, 2)
-scale = Vector2(2, 2)
-texture = ExtResource("4_iywne")
+[node name="Animations" type="AnimatedSprite2D" parent="Reksio"]
+position = Vector2(-0.5, -6.5)
+sprite_frames = SubResource("SpriteFrames_p57ef")
+animation = &"walk"
 offset = Vector2(0, -8)
 
 [node name="Walk Collision" type="CollisionShape2D" parent="Reksio"]
 shape = SubResource("CircleShape2D_lbhrr")
 
-[node name="Kretes" type="StaticBody2D" parent="." node_paths=PackedStringArray("target_to_follow")]
-position = Vector2(266, 350)
+[node name="Kretes" type="AnimatableBody2D" parent="." node_paths=PackedStringArray("target_to_follow")]
+position = Vector2(265, 333)
 scale = Vector2(2, 2)
+collision_layer = 0
+collision_mask = 0
+sync_to_physics = false
 script = ExtResource("4_lbhrr")
 target_to_follow = NodePath("../Reksio")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Kretes"]
-scale = Vector2(2, 2)
-texture = ExtResource("6_p57ef")
+[node name="Animations" type="AnimatedSprite2D" parent="Kretes"]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_u5sy4")
+animation = &"walk"
 offset = Vector2(0, -7)
 
 [node name="Walk Collision" type="CollisionShape2D" parent="Kretes"]
@@ -60,6 +164,7 @@ offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 2
 script = ExtResource("7_u5sy4")
+metadata/_edit_lock_ = true
 
 [node name="Items" type="Control" parent="UI"]
 layout_mode = 3

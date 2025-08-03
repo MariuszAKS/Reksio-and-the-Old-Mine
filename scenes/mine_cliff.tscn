@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dg126fh464hyv"]
+
+[ext_resource type="Texture2D" uid="uid://ba3aqxx5jxiq7" path="res://art/visual/old_mine_cliff.png" id="1_045md"]
+[ext_resource type="Script" uid="uid://o4aoft8qwsw5" path="res://scripts/mine_cliff.gd" id="1_rfy7p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_045md"]
+resource_local_to_scene = true
+radius = 56.0089
+
+[node name="Mine Cliff" type="Node2D"]
+script = ExtResource("1_rfy7p")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 639.0
+offset_bottom = 360.0
+mouse_filter = 2
+texture = ExtResource("1_045md")
+
+[node name="Pickables" type="Node2D" parent="."]
+
+[node name="Walk area" type="Area2D" parent="."]
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walk area"]
+polygon = PackedVector2Array(199, 246, 177, 278, 90, 285, 35, 318, 35, 359, 573, 359, 571, 310, 484, 224, 411, 224, 348, 203, 253, 242)
+
+[node name="Change scene area" type="Area2D" parent="."]
+position = Vector2(75, 338)
+collision_layer = 0
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Change scene area"]
+shape = SubResource("CircleShape2D_045md")
+
+[node name="Enter position" type="Marker2D" parent="."]
+position = Vector2(162, 319)
