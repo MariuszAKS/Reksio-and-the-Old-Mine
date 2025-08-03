@@ -6,17 +6,20 @@ signal item_clicked(id)
 
 @onready var item_grid: GridContainer = get_node("Items/Margin/Grid")
 @onready var item_textures: Array[Texture] = [ # temporarily all pickaxe heads
+	load("res://art/visual/kretes.png"),
+	load("res://art/visual/item_hammer_chisel.png"),
+	load("res://art/visual/item_wheels.png"),
+	load("res://art/visual/item_wooden_pole.png"),
+	load("res://art/visual/item_diesel_wheeled.png"),
+	load("res://art/visual/item_belts.png"),
+	load("res://art/visual/item_arms.png"),
+	load("res://art/visual/item_hands.png"),
 	load("res://art/visual/item_pickaxe_heads.png"),
-	load("res://art/visual/item_pickaxe_heads.png"),
-	load("res://art/visual/item_pickaxe_heads.png"),
-	load("res://art/visual/item_pickaxe_heads.png"),
-	load("res://art/visual/item_pickaxe_heads.png"),
-	load("res://art/visual/item_pickaxe_heads.png"),
-	load("res://art/visual/item_pickaxe_heads.png"),
-	load("res://art/visual/item_pickaxe_heads.png"),
-	load("res://art/visual/item_pickaxe_heads.png"),
-	load("res://art/visual/item_pickaxe_heads.png"),
-	load("res://art/visual/item_pickaxe_heads.png"),
+	load("res://art/visual/item_cage.png"),
+	load("res://art/visual/item_minecart.png"),
+	load("res://art/visual/item_basket.png"),
+	load("res://art/visual/item_ore.png"),
+	load("res://art/visual/item_hamster_wheel.png")
 ]
 
 
@@ -27,8 +30,10 @@ func _ready() -> void:
 		item_slots[i].gui_input.connect(func(event): on_item_pressed(event, i))
 
 
-func update_inventory(inventory):
+func update_inventory(inventory: Array[Game.Items]):
 	# reveives list of enums, which are essentially ints (create array with all item textures)
+	inventory.sort()
+
 	var item_slots = item_grid.get_children()
 	var grid_id = 0
 

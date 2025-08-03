@@ -1,7 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg126fh464hyv"]
+[gd_scene load_steps=13 format=3 uid="uid://dg126fh464hyv"]
 
 [ext_resource type="Texture2D" uid="uid://ba3aqxx5jxiq7" path="res://art/visual/old_mine_cliff.png" id="1_045md"]
 [ext_resource type="Script" uid="uid://o4aoft8qwsw5" path="res://scripts/mine_cliff.gd" id="1_rfy7p"]
+[ext_resource type="Texture2D" uid="uid://bbu2hyxlwawa5" path="res://art/visual/ground_pickaxe_heads.png" id="2_rfy7p"]
+[ext_resource type="PackedScene" uid="uid://oj4c3snk5yg6" path="res://scenes/pickable.tscn" id="3_5y33c"]
+[ext_resource type="Texture2D" uid="uid://bwxsec2bns5ys" path="res://art/visual/empty.png" id="4_34wja"]
+[ext_resource type="Texture2D" uid="uid://c7shh12qt7no" path="res://art/visual/ground_wheels.png" id="4_ru4sj"]
+[ext_resource type="Texture2D" uid="uid://cueo2cww5vk7k" path="res://art/visual/ground_hands.png" id="5_ru4sj"]
+[ext_resource type="Texture2D" uid="uid://b18t8sqxnjyir" path="res://art/visual/ground_arms.png" id="6_puoa1"]
+[ext_resource type="Texture2D" uid="uid://2vjvasu1c5j4" path="res://art/visual/ground_minecart.png" id="7_eybcb"]
+[ext_resource type="Texture2D" uid="uid://cyi7tniw27rii" path="res://art/visual/diesel_stages.png" id="9_eybcb"]
+[ext_resource type="Texture2D" uid="uid://d0tg80jl341es" path="res://art/visual/pole_in_rocks.png" id="10_0beyb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_045md"]
 resource_local_to_scene = true
@@ -11,28 +20,96 @@ radius = 56.0089
 script = ExtResource("1_rfy7p")
 
 [node name="Background" type="TextureRect" parent="."]
-offset_right = 639.0
+offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 2
 texture = ExtResource("1_045md")
+metadata/_edit_lock_ = true
 
 [node name="Pickables" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Belts" parent="Pickables" instance=ExtResource("3_5y33c")]
+offset_left = 218.0
+offset_top = 204.0
+offset_right = 250.0
+offset_bottom = 236.0
+scale = Vector2(1, 1)
+texture = ExtResource("4_34wja")
+item = 5
+
+[node name="Minecart" parent="Pickables" instance=ExtResource("3_5y33c")]
+offset_left = 320.0
+offset_top = 292.0
+offset_right = 384.0
+offset_bottom = 324.0
+texture = ExtResource("7_eybcb")
+
+[node name="Pickaxe heads" parent="Pickables" instance=ExtResource("3_5y33c")]
+offset_left = 457.0
+offset_top = 196.0
+offset_right = 489.0
+offset_bottom = 228.0
+texture = ExtResource("2_rfy7p")
+
+[node name="Wooden arms" parent="Pickables" instance=ExtResource("3_5y33c")]
+offset_left = 230.0
+offset_top = 221.0
+offset_right = 262.0
+offset_bottom = 253.0
+texture = ExtResource("6_puoa1")
+
+[node name="Wooden hands" parent="Pickables" instance=ExtResource("3_5y33c")]
+offset_left = 154.0
+offset_top = 182.0
+offset_right = 186.0
+offset_bottom = 214.0
+texture = ExtResource("5_ru4sj")
+item = 7
+
+[node name="Wooden pole" parent="Pickables" instance=ExtResource("3_5y33c")]
+offset_left = 400.0
+offset_top = 164.0
+offset_right = 432.0
+offset_bottom = 196.0
+texture = ExtResource("10_0beyb")
+
+[node name="Wooden wheels" parent="Pickables" instance=ExtResource("3_5y33c")]
+anchors_preset = 10
+anchor_bottom = 0.0
+offset_left = 179.0
+offset_top = 225.0
+offset_right = 211.0
+offset_bottom = 257.0
+grow_vertical = 1
+texture = ExtResource("4_ru4sj")
+item = 2
+
+[node name="Diesel" type="Sprite2D" parent="."]
+position = Vector2(542, 304)
+scale = Vector2(2, 2)
+texture = ExtResource("9_eybcb")
+offset = Vector2(20, -32)
+hframes = 4
 
 [node name="Walk area" type="Area2D" parent="."]
 collision_mask = 0
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walk area"]
-polygon = PackedVector2Array(199, 246, 177, 278, 90, 285, 35, 318, 35, 359, 573, 359, 571, 310, 484, 224, 411, 224, 348, 203, 253, 242)
+polygon = PackedVector2Array(177, 238, 177, 278, 90, 285, 35, 318, 35, 359, 573, 359, 571, 310, 484, 224, 411, 224, 348, 203, 265, 238)
 
 [node name="Change scene area" type="Area2D" parent="."]
 position = Vector2(75, 338)
 collision_layer = 0
 collision_mask = 2
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Change scene area"]
 shape = SubResource("CircleShape2D_045md")
 
 [node name="Enter position" type="Marker2D" parent="."]
 position = Vector2(162, 319)
+metadata/_edit_lock_ = true

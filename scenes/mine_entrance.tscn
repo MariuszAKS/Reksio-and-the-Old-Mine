@@ -16,6 +16,8 @@ offset_right = 640.0
 offset_bottom = 360.0
 texture = ExtResource("2_vjqlj")
 
+[node name="Pickables" type="Node2D" parent="."]
+
 [node name="Machine" type="Sprite2D" parent="."]
 position = Vector2(260, 212)
 scale = Vector2(4, 4)

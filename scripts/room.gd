@@ -9,6 +9,8 @@ signal change_scene
 @onready var enter_position: Marker2D = get_node("Enter position")
 @onready var change_scene_area: Area2D = get_node("Change scene area")
 
+@onready var pickables: Array = get_node("Pickables").get_children()
+
 
 func _ready() -> void:
 	walk_area.input_event.connect(on_walk_area_input)
