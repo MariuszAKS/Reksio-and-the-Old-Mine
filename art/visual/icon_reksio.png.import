@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5ty1egrvb3v3"
-path="res://.godot/imported/kretes.png-9f8e7e8cdb81fb06a959704e21c5e49f.ctex"
+uid="uid://bvekbeqmef6ka"
+path="res://.godot/imported/icon_reksio.png-dd6a2165d789e7b17039c5b39dd364de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/visual/kretes.png"
-dest_files=["res://.godot/imported/kretes.png-9f8e7e8cdb81fb06a959704e21c5e49f.ctex"]
+source_file="res://art/visual/icon_reksio.png"
+dest_files=["res://.godot/imported/icon_reksio.png-dd6a2165d789e7b17039c5b39dd364de.ctex"]
 
 [params]
 

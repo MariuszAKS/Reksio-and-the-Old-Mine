@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://b44tdxtwhl228"]
+
+[ext_resource type="Script" uid="uid://bjdi0dpj857ok" path="res://scripts/ending.gd" id="1_mqjok"]
+[ext_resource type="Texture2D" uid="uid://dvcjkoiw52k3d" path="res://art/visual/ending1.png" id="2_fyrdv"]
+
+[node name="Ending" type="Control" node_paths=PackedStringArray("next_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mqjok")
+next_button = NodePath("MarginContainer/Button")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fyrdv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 16
+
+[node name="Button" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = " Następna "

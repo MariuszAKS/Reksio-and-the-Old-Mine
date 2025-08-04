@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvekbeqmef6ka"
-path="res://.godot/imported/reksio.png-d8591785407de6d3bdcd98c179ad0f9d.ctex"
+uid="uid://dvcjkoiw52k3d"
+path="res://.godot/imported/ending1.png-d9e954c7bcec50044c78c73c6139036f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/visual/reksio.png"
-dest_files=["res://.godot/imported/reksio.png-d8591785407de6d3bdcd98c179ad0f9d.ctex"]
+source_file="res://art/visual/ending1.png"
+dest_files=["res://.godot/imported/ending1.png-d9e954c7bcec50044c78c73c6139036f.ctex"]
 
 [params]
 

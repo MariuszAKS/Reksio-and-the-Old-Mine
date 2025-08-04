@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d34lmawmd1w76"]
+[gd_scene load_steps=6 format=3 uid="uid://d34lmawmd1w76"]
 
 [ext_resource type="Script" uid="uid://hn17fbvdl01g" path="res://scripts/mine_entrance.gd" id="1_ngmsy"]
 [ext_resource type="Texture2D" uid="uid://kwqhaf3m24xl" path="res://art/visual/old_mine_entrance.png" id="2_vjqlj"]
 [ext_resource type="Texture2D" uid="uid://dlp75cdm2b8j4" path="res://art/visual/machine_stages.png" id="3_wd78g"]
+[ext_resource type="AudioStream" uid="uid://dycteo4hntiyr" path="res://art/audio/Build.wav" id="4_2luia"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wd78g"]
 resource_local_to_scene = true
@@ -19,21 +20,23 @@ texture = ExtResource("2_vjqlj")
 [node name="Pickables" type="Node2D" parent="."]
 
 [node name="Machine" type="Sprite2D" parent="."]
-position = Vector2(260, 212)
-scale = Vector2(4, 4)
+position = Vector2(273, 208)
 texture = ExtResource("3_wd78g")
-offset = Vector2(0, -14)
+offset = Vector2(-12, -24)
 hframes = 11
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Machine"]
+stream = ExtResource("4_2luia")
 
 [node name="Walk area" type="Area2D" parent="."]
 collision_mask = 0
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walk area"]
-polygon = PackedVector2Array(219, 186, 156, 194, 156, 359, 540, 359, 540, 295, 483, 293, 462, 279, 461.486, 256.136, 498, 241, 499, 193, 291, 189, 280, 220, 220, 221)
+polygon = PackedVector2Array(155, 304, 387, 304, 423, 284, 490, 265, 639, 265, 639, 208, 498, 208, 482, 195, 284, 195, 284, 214, 220, 214)
 
 [node name="Change scene area" type="Area2D" parent="."]
-position = Vector2(494, 216)
+position = Vector2(542, 233)
 collision_layer = 0
 collision_mask = 2
 metadata/_edit_group_ = true

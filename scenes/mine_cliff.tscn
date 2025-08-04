@@ -16,18 +16,19 @@
 resource_local_to_scene = true
 radius = 56.0089
 
-[node name="Mine Cliff" type="Node2D"]
+[node name="Mine Cliff" type="Node2D" node_paths=PackedStringArray("cage", "wooden_pole", "ore")]
 script = ExtResource("1_rfy7p")
+cage = NodePath("Pickables/Cage")
+wooden_pole = NodePath("Pickables/Wooden pole")
+ore = NodePath("Pickables/Ore")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 2
 texture = ExtResource("1_045md")
-metadata/_edit_lock_ = true
 
 [node name="Pickables" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
 
 [node name="Belts" parent="Pickables" instance=ExtResource("3_5y33c")]
 offset_left = 218.0
@@ -38,12 +39,33 @@ scale = Vector2(1, 1)
 texture = ExtResource("4_34wja")
 item = 5
 
+[node name="Cage" parent="Pickables" instance=ExtResource("3_5y33c")]
+offset_left = 526.0
+offset_top = 248.0
+offset_right = 558.0
+offset_bottom = 280.0
+scale = Vector2(1, 1)
+mouse_filter = 2
+texture = ExtResource("4_34wja")
+item = 9
+
 [node name="Minecart" parent="Pickables" instance=ExtResource("3_5y33c")]
 offset_left = 320.0
 offset_top = 292.0
 offset_right = 384.0
 offset_bottom = 324.0
 texture = ExtResource("7_eybcb")
+item = 10
+
+[node name="Ore" parent="Pickables" instance=ExtResource("3_5y33c")]
+offset_left = 398.0
+offset_top = 197.0
+offset_right = 430.0
+offset_bottom = 229.0
+scale = Vector2(1, 1)
+mouse_filter = 2
+texture = ExtResource("4_34wja")
+item = 12
 
 [node name="Pickaxe heads" parent="Pickables" instance=ExtResource("3_5y33c")]
 offset_left = 457.0
@@ -51,6 +73,7 @@ offset_top = 196.0
 offset_right = 489.0
 offset_bottom = 228.0
 texture = ExtResource("2_rfy7p")
+item = 8
 
 [node name="Wooden arms" parent="Pickables" instance=ExtResource("3_5y33c")]
 offset_left = 230.0
@@ -58,6 +81,7 @@ offset_top = 221.0
 offset_right = 262.0
 offset_bottom = 253.0
 texture = ExtResource("6_puoa1")
+item = 6
 
 [node name="Wooden hands" parent="Pickables" instance=ExtResource("3_5y33c")]
 offset_left = 154.0
@@ -73,6 +97,7 @@ offset_top = 164.0
 offset_right = 432.0
 offset_bottom = 196.0
 texture = ExtResource("10_0beyb")
+item = 3
 
 [node name="Wooden wheels" parent="Pickables" instance=ExtResource("3_5y33c")]
 anchors_preset = 10
@@ -90,26 +115,23 @@ position = Vector2(542, 304)
 scale = Vector2(2, 2)
 texture = ExtResource("9_eybcb")
 offset = Vector2(20, -32)
-hframes = 4
+hframes = 5
 
 [node name="Walk area" type="Area2D" parent="."]
 collision_mask = 0
 metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walk area"]
-polygon = PackedVector2Array(177, 238, 177, 278, 90, 285, 35, 318, 35, 359, 573, 359, 571, 310, 484, 224, 411, 224, 348, 203, 265, 238)
+polygon = PackedVector2Array(177, 238, 177, 278, 90, 285, 35, 318, 35, 344, 571, 344, 571, 310, 484, 224, 411, 224, 348, 203, 265, 238)
 
 [node name="Change scene area" type="Area2D" parent="."]
 position = Vector2(75, 338)
 collision_layer = 0
 collision_mask = 2
 metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Change scene area"]
 shape = SubResource("CircleShape2D_045md")
 
 [node name="Enter position" type="Marker2D" parent="."]
 position = Vector2(162, 319)
-metadata/_edit_lock_ = true

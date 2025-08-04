@@ -1,10 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://dtjpu6wavxcos"]
+[gd_scene load_steps=25 format=3 uid="uid://dtjpu6wavxcos"]
 
 [ext_resource type="Script" uid="uid://bqhe1xqgbksbk" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://bhl31n4twp24t" path="res://scripts/reksio.gd" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://boa38aykhaa42" path="res://art/visual/reksio_walk.png" id="3_u5sy4"]
 [ext_resource type="Script" uid="uid://4rfstli3fy6e" path="res://scripts/kretes.gd" id="4_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://o3mojip3wflo" path="res://art/visual/kretes_walk.png" id="5_u5sy4"]
+[ext_resource type="AudioStream" uid="uid://dmpfl6t4iu83h" path="res://art/audio/Kretes.wav" id="7_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://b5ty1egrvb3v3" path="res://art/visual/icon_kretes.png" id="7_gee14"]
 [ext_resource type="Script" uid="uid://dmaanwyoktxxm" path="res://scripts/ui.gd" id="7_u5sy4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gee14"]
@@ -114,6 +116,7 @@ animations = [{
 radius = 4.0
 
 [node name="Game" type="Node2D"]
+process_mode = 1
 y_sort_enabled = true
 script = ExtResource("1_lnu2h")
 
@@ -166,11 +169,10 @@ script = ExtResource("7_u5sy4")
 metadata/_edit_lock_ = true
 
 [node name="Items" type="Control" parent="UI"]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 0
-offset_top = 284.0
-offset_right = 148.0
-offset_bottom = 360.0
+offset_right = 219.0
+offset_bottom = 76.0
 mouse_filter = 2
 
 [node name="Background" type="ColorRect" parent="UI/Items"]
@@ -205,7 +207,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
-columns = 4
+columns = 6
 metadata/_edit_group_ = true
 
 [node name="Slot0" type="TextureRect" parent="UI/Items/Margin/Grid"]
@@ -239,3 +241,74 @@ mouse_filter = 0
 [node name="Slot7" type="TextureRect" parent="UI/Items/Margin/Grid"]
 layout_mode = 2
 mouse_filter = 0
+
+[node name="Slot8" type="TextureRect" parent="UI/Items/Margin/Grid"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Slot9" type="TextureRect" parent="UI/Items/Margin/Grid"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Slot10" type="TextureRect" parent="UI/Items/Margin/Grid"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Slot11" type="TextureRect" parent="UI/Items/Margin/Grid"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Talking" type="Control" parent="UI"]
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -73.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Timer" type="Timer" parent="UI/Talking"]
+wait_time = 0.05
+one_shot = true
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="UI/Talking"]
+stream = ExtResource("7_0tnpc")
+
+[node name="Background" type="ColorRect" parent="UI/Talking"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.160784, 0.160784, 0.160784, 0.647059)
+
+[node name="Margin" type="MarginContainer" parent="UI/Talking"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Row" type="HBoxContainer" parent="UI/Talking/Margin"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="UI/Talking/Margin/Row"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("7_gee14")
+expand_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="UI/Talking/Margin/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+text = "Może ci się to nie podobać, ale to dla twojego bezpieczeństwa Diesel. Teraz trzeba to zamknąć."
